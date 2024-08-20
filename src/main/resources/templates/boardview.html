@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세 페이지</title>
+</head>
+<style>
+    #view-post{
+        display: flex;
+        flex-direction: column;
+        min-height: 400px;
+        border: solid 1px grey;
+    }
+    #post-body{
+        text-align: left;
+        padding: 20px;
+        flex: 1;
+    }
+    #post-head hr{
+        margin: 0;
+    }
+    .button{
+        display: inline-block;
+        width: 115px;
+        height: 25px;
+        background-color: darkslategray;
+        padding: 10px;
+        margin: 5px;
+        text-align: center;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+    }
+</style>
+<body>
+<div id="content">
+    <div id="view-post">
+        <div id="post-head">
+            <h1 th:text="${board.title}">제목</h1>
+            <hr>
+            <div style="clear:both"></div>
+            <hr>
+        </div>
+        <div id="post-body">
+            <p th:text="${board.content}">내용 들어갈 부분</p>
+        </div>
+    </div>
+    <a class="button" th:href="@{/board/delete(id=${board.id})}">글 삭제</a>
+    <a class="button" th:href="@{${board.filepath}}">파일 내용 확인</a>
+    <a class="button" th:href="@{/board/modify/{id}(id=${board.id})}">수정</a>
+</div>
+
+</body>
+</html>
